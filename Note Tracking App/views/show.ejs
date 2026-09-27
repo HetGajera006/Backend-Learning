@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading: <%= filename %></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-900 text-white min-h-screen p-10 font-sans">
+    
+    <div class="max-w-3xl mx-auto mt-10">
+        <a href="/" class="inline-flex items-center text-zinc-400 hover:text-blue-400 transition-colors mb-6 text-sm font-medium">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Go Back Home
+        </a>
+
+        <div class="bg-zinc-800 p-8 md:p-12 rounded-xl shadow-lg border border-zinc-700">
+            <h1 class="text-3xl md:text-4xl font-bold text-blue-400 tracking-wide mb-2">
+                <%= filename %>
+            </h1>
+            
+            <hr class="border-zinc-700 my-6">
+            <p class="text-lg text-zinc-300 font-light leading-relaxed whitespace-pre-wrap"><%= filedata %></p>
+        </div>
+    </div>
+
+</body>
+</html>
