@@ -43,7 +43,6 @@ app.post("/create", async (req, res) => {
         let token = jwt.sign({ email: user.email, userid: user._id }, "secret");
         res.cookie("token", token);
         
-        // Redirect to profile instead of just sending "Created" text
         res.redirect("/profile");
     } catch (err) {
         res.status(500).send(err.message);
@@ -80,6 +79,19 @@ app.get("/profile", isLoggedIn, async (req, res) => {
     res.render('profile', { user });
 });
 
+app.get("/like/:id", isLoggedIn, async (req, res) => {
+    let post = await postModel.findOne({ _id: req.params.id }).populate("user");
+    if(post.like.indexOf(req.user.userid) === -1){
+        post.like.push(req.user.userid);
+    }
+    else{
+        post.like.splice(post.like.indexOf(req.user.userid) , 1);
+    }
+    await post.save();
+    res.redirect("/profile");
+});
+
+
 app.post("/post", isLoggedIn, async (req, res) => {
     let user = await userModel.findOne({ email: req.user.email });
     let { content } = req.body;
@@ -113,4 +125,6 @@ function isLoggedIn(req, res, next) {
     }
 }
 
-app.listen(5000);
+app.listen(5000 , () => {
+    console.log("server is running");
+});

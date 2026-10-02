@@ -39,10 +39,10 @@
                                 <p class="text-sm text-zinc-200 leading-5">
                                     <%= post.content %>
                                 </p>
-
-                                <div class="buttons mt-4">
-                                    <a href="#" class="text-blue-400 text-sm mr-3 hover:underline">
-                                        Like
+                                <small class="inline-block mt-2"><%= post.like ? post.like.length : 0 %> Likes</small>
+                                <div class="buttons mt-2">
+                                    <a href="/like/<%= post._id %>" class="text-blue-400 text-sm mr-3 hover:underline">
+                                        <%= post.like.indexOf(user._id) === -1 ? "Like" : "Unlike" %>
                                     </a>
                                     <a href="#" class="text-zinc-500 text-sm hover:text-zinc-300">
                                         Edit
