@@ -31,31 +31,35 @@
                 <h3 class="text-zinc-300 text-sm">Your Posts.</h3>
 
                 <div class="postcontainer mt-4 w-full md:w-[466px]">
-                    <% if(user.post.length > 0) { %>
+                    <% if(user.post.length> 0) { %>
                         <% user.post.reverse().forEach(function(post) { %>
                             <div class="post bg-zinc-800 border border-zinc-700 rounded-md p-3 mb-3">
-                                <h4 class="text-blue-400 text-sm mb-2">@<%= user.username %></h4>
+                                <h4 class="text-blue-400 text-sm mb-2">@<%= user.username %>
+                                </h4>
 
                                 <p class="text-sm text-zinc-200 leading-5">
                                     <%= post.content %>
                                 </p>
-                                <small class="inline-block mt-2"><%= post.like ? post.like.length : 0 %> Likes</small>
+                                <small class="inline-block mt-2">
+                                    <%= post.like ? post.like.length : 0 %> Likes
+                                </small>
                                 <div class="buttons mt-2">
                                     <a href="/like/<%= post._id %>" class="text-blue-400 text-sm mr-3 hover:underline">
-                                        <%= post.like.indexOf(user._id) === -1 ? "Like" : "Unlike" %>
+                                        <%= post.like.indexOf(user._id)===-1 ? "Like" : "Unlike" %>
                                     </a>
-                                    <a href="#" class="text-zinc-500 text-sm hover:text-zinc-300">
+                                    <a href="/edit/<%= post._id %>" class="text-zinc-500 text-sm hover:text-zinc-300">
                                         Edit
                                     </a>
                                 </div>
                             </div>
-                        <% }) %>
-                    <% } else { %>
-                        <p class="text-zinc-500 text-sm mt-4">You haven't posted anything yet.</p>
-                    <% } %>
+                            <% }) %>
+                                <% } else { %>
+                                    <p class="text-zinc-500 text-sm mt-4">You haven't posted anything yet.</p>
+                                    <% } %>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
