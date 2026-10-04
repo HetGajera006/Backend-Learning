@@ -15,8 +15,18 @@
         </a>
 
         <div class="pt-15">
-            <h2 class="text-3xl mb-1">Hello <%= user.name %> 👋🏻</h2>
+            <div class="flex gap-3 mb-2 items-center">
+                <div class="h-10 w-10 rounded-lg overflow-hidden">
+                    <a href="/profile/upload" class="block w-full h-full">
+                        <img class="w-full h-full object-cover" src="/images/upload/<%= user.profilepic %>"
+                            alt="Profile Picture">
+                    </a>
+                </div>
 
+                <h2 class="text-3xl mb-1">
+                    Hello <%= user.name %> 👋🏻
+                </h2>
+            </div>
             <p class="text-sm text-zinc-300 mb-5">You can create a new post.</p>
 
             <form action="/post" method="post">
@@ -36,7 +46,6 @@
                             <div class="post bg-zinc-800 border border-zinc-700 rounded-md p-3 mb-3">
                                 <h4 class="text-blue-400 text-sm mb-2">@<%= user.username %>
                                 </h4>
-
                                 <p class="text-sm text-zinc-200 leading-5">
                                     <%= post.content %>
                                 </p>
